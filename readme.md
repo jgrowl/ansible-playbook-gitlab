@@ -7,7 +7,7 @@ GitLab is a truly awesome platform for doing development within a business, but 
 ## Prerequisites
 You need to have sudo installed on the server and Ansible on the client. 
 
-_The playbooks use the apt module, and for that reason they only work on Debian-based distributions. They are currently only tested on ubuntu server 12.04. Patches are welcome for extending support for other platforms. 
+The playbooks use the apt module, and for that reason they only work on Debian-based distributions. They are currently only tested on ubuntu server 12.04. Patches are welcome for extending support for other platforms. 
 
 ## Assumptions
 You should probably have dns set up with a record that points to the box you would like to install gitlab to (gitlab.example.com) 
@@ -15,7 +15,9 @@ The box that you are installing gitlab to needs to be able to resolve the gitlab
 
 ## Installation
 Edit vars/common.yml and change the variables to suit your desired configuration (At least change the password).
+
 Edit hosts file and add the ip of the machine you wish to install gitlab to.
+
 Run the playbook (ansible-playbook -cssh -i /etc/ansible/playbooks/gitlab/hosts /etc/ansible/playbooks/gitlab/gitlab.yml)
 
 Now you should be able to log in with username admin@local.host and password 5iveL!fe – change it once you’ve logged in.
