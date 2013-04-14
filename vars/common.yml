@@ -1,0 +1,17 @@
+gitlabUrl: http://gitlab.example.com/
+
+rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p327.tar.gz
+tmpRubyPath: /tmp/ruby/ruby-1.9.3-p327
+
+gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
+gitlabHost: gitlab.example.com # e.g., server_name source.example.com;
+gitlabEmailFrom: gitlab@gitlab.example.com
+
+gitlabDatabaseUsername: gitlab
+gitlabDatabasePassword: youPassw0Rd
+
+# Currently only nginx is supported
+webserver: nginx
+
+# Currently only mysql is supported
+database: mysql 

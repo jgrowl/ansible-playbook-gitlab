@@ -1,0 +1,17 @@
+---
+# This Playbook deploys ansible 
+
+- hosts: gitlab
+  vars_files:
+    - vars/common.yml
+  user: root
+  #sudo: True
+  tasks:
+  - include: tasks/install-dependencies.yml
+  - include: tasks/install-mysql.yml
+    only_if: "'$database' == 'mysql'"
+  - include: tasks/install-gitlab.yml
+  - include: tasks/install-nginx.yml
+    only_if: "'$webserver' == 'nginx'"
+  handlers:
+   - include: handlers/main.yml

@@ -1,0 +1,62 @@
+---
+
+# Play book installs gitlab
+- name: clone gitlab source
+  git: repo=https://github.com/gitlabhq/gitlabhq.git dest=/home/git/gitlab version=5-0-stable
+
+- name: gitlab should be owned by git user
+  file: path=/home/git/gitlab owner=git group=git recurse=yes state=directory
+
+- name: Set the gitlab.yml configuration file
+  action: template src=templates/home/git/gitlab/config/gitlab.yml.j2 dest=/home/git/gitlab/config/gitlab.yml owner=git group=git
+
+- name: ensure copy of unicorn config exists 
+  action: template src=templates/home/git/gitlab/config/unicorn.rb.j2 dest=/home/git/gitlab/config/unicorn.rb owner=git group=git
+
+- name: ensure copy of database config exists 
+  action: template src=templates/home/git/gitlab/config/database.yml.j2 dest=/home/git/gitlab/config/database.yml owner=git group=git
+
+- name: ensure GitLab can write to log (1)
+  file: state=directory path=/home/git/gitlab/log owner=git recurse=yes
+
+- name: ensure GitLab can write to log (2)
+  command: chmod -R u+rwX /home/git/gitlab/log
+
+- name: ensure GitLab can write to tmp (1)
+  file: state=directory path=/home/git/gitlab/tmp owner=git recurse=yes
+
+- name: ensure GitLab can write to tmp (2)
+  command: chmod -R u+rwX /home/git/gitlab/tmp
+
+- name: ensure directory for satellites exists
+  file: state=directory path=/home/git/gitlab-satellites owner=git group=git
+
+- name: Create directory for pids and make sure GitLab can write to it
+  file: path=/home/git/gitlab/tmp/pids/ state=directory owner=git group=git
+
+- name: ensure GitLab can write to pid
+  command: chmod -R u+rwX /home/git/gitlab/tmp/pids
+
+- name: ensure gem charlock_holmes is installed
+  gem: name=charlock_holmes version=0.6.9 state=present
+  #command: sudo gem install charlock_holmes --version '0.6.9'
+
+- name: ensure GitLab bundle is installed
+  command: sudo -u git -H bundle install --deployment --without development test postgres chdir=/home/git/gitlab
+
+# Some tasks like setting up the database should only ever get run once.
+- name: ensure there is a ansible directory
+  file: path=/home/git/gitlab/.ansible state=directory owner=git group=git 
+
+# Note if this fails for some reason you might need to manually remove the .ansible/setup-db
+- name: setup database
+  shell:  sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production force=yes && sudo -u git -H touch /home/git/gitlab/.ansible/setup-db chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/setup-db
+
+- name: ensure init script is installed
+  get_url: url=https://raw.github.com/gitlabhq/gitlab-recipes/5-0-stable/init.d/gitlab dest=/etc/init.d/gitlab mode=0755
+
+- name: make GitLab start on boot
+  command: update-rc.d gitlab defaults 21
+
+- name: restart GitLab
+  service: name=gitlab state=started
