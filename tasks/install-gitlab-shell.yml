@@ -1,0 +1,20 @@
+---
+# Installs gitlab shell
+
+# Clone gitlab shell
+- name: Get gitlab-shell source
+  git: repo=https://github.com/gitlabhq/gitlab-shell.git dest=/home/git/gitlab-shell version=$gitlabShellVersion
+
+- name: Set git as owner
+  file: path=/home/git/gitlab-shell owner=git group=git recurse=yes state=directory
+
+- name: Set the /home/git/gitlab-shell/config.yml
+  action: template src=templates/home/git/gitlab-shell/config.yml.j2 dest=/home/git/gitlab-shell/config.yml
+
+# Do setup
+- name: Install gitlab-shell
+  command: sudo -u git -H ./bin/install chdir=/home/git/gitlab-shell creates=/home/git/repositories
+
+#Install also touches this file, multiple creates=?
+## File used as authorized_keys for gitlab user
+#auth_file: "/home/git/.ssh/authorized_keys"

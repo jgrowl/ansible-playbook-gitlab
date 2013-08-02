@@ -1,0 +1,13 @@
+---
+
+# Play book installs gitlab gems
+
+- name: ensure gem charlock_holmes is installed
+  gem: name=charlock_holmes version=0.6.9.4 state=present
+
+- name: ensure GitLab bundle is installed
+  command: sudo -u git -H bundle install --deployment --without development test postgres unicorn aws chdir=/home/git/gitlab
+
+#TODO: Add postresql support in a conditional
+# Or for PostgreSQL (note, the option says "without ... mysql")
+# sudo -u git -H bundle install --deployment --without development test mysql unicorn aws

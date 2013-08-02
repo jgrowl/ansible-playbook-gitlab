@@ -19,13 +19,13 @@
     - git-core 
     - openssh-server 
     - redis-server 
-    - postfix 
     - checkinstall 
     - libxml2-dev 
-    - libxslt1-dev
+    - libxslt-dev 
     - libcurl4-openssl-dev 
     - libicu-dev
     - python
+    #- postfix 
 
 # Make sure right version of python will be used
 - name: ensure /usr/local/bin/python2 links to /usr/bin/python
@@ -39,7 +39,7 @@
   get_url: url=$rubyUrl dest=/tmp/ruby
 
 - name: ensure ruby is extracted
-  command: tar -xf ruby-1.9.3-p327.tar.gz chdir=/tmp/ruby creates=$tmpRubyPath
+  command: tar -xf ruby-1.9.3-p392.tar.gz chdir=/tmp/ruby creates=$tmpRubyPath
 
 - name: ensure ruby is configured
   command: ./configure chdir=$tmpRubyPath creates=$tmpRubyPath/Makefile
@@ -59,6 +59,10 @@
 - name: ensure user git is present
   # Possible problem is that --disabled-password is not set explicitly – I couldn’t find anything like that.
   user: state=present name=git system=yes shell=/bin/sh comment="Git Version Control" 
+
+
+#SHELL
+
 
 # Clone gitlab shell
 - name: Get gitlab-shell source
