@@ -53,7 +53,7 @@
   action: template src=templates/home/git/gitlab/config/puma.rb.j2 dest=/home/git/gitlab/config/puma.rb owner=git group=git
 
 - name: Set git global user name
-  command: sudo -u git -H git config --global user.name "$gitGlobalUserName"
+  command: sudo -u git -H git config --global user.name "$gitGlobalUserName" chdir=/home/git/gitlab
 
 - name: Set git global user email
-  command: sudo -u git -H git config --global user.email "$gitGlobalUserEmail"
+  command: sudo -u git -H git config --global user.email "$gitGlobalUserEmail" chdir=/home/git/gitlab
