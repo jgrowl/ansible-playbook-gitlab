@@ -1,5 +1,5 @@
 - name: ensure init script is installed
-  file: src=files/etc/init.d/gitlab dest=/etc/init.d/gitlab owner=root group=root mode=0755
+  copy: src=files/etc/init.d/gitlab dest=/etc/init.d/gitlab owner=root group=root mode=0755
 
 - name: make GitLab start on boot 
   command: update-rc.d gitlab defaults 21
