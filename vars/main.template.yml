@@ -7,8 +7,9 @@ gitlabShellVersion: v1.4.0
 
 gitlabVersion: 5-4-stable
 
-gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
 gitlabHost: gitlab.example.com # e.g., server_name source.example.com;
+gitlabPort: 80
+gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
 gitlabEmailFrom: gitlab@gitlab.example.com
 https: false
 
