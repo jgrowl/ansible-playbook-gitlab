@@ -1,2 +1,3 @@
 [gitlab]
-gitlab.example.com
+127.0.0.1
+#gitlab.example.com

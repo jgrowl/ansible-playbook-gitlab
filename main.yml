@@ -1,11 +1,10 @@
 ---
-# This Playbook deploys ansible 
+# This Playbook deploys gitlab!
 
 - hosts: gitlab
   vars_files:
-    - vars/common.yml
+    - vars/main.yml
   user: root
-  #sudo: True
   tasks:
   - include: tasks/install-dependencies.yml
   - include: tasks/install-mysql.yml
