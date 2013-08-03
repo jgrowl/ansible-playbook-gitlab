@@ -11,7 +11,7 @@ server {
   server_name {{gitlabHost}};     # e.g., server_name source.example.com;
   root /home/git/gitlab/public;
 
-{% if https == 'true'}
+{% if https == 'true' %}
   ssl on;
   ssl_certificate {{sslCertificate}};
   ssl_certificate_key {{sslCertificateKey}};
