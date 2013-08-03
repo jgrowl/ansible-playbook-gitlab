@@ -8,13 +8,13 @@
   file: path=/home/git/gitlab owner=git group=git recurse=yes state=directory
 
 - name: Set the gitlab.yml configuration file
-  action: template src=templates/home/git/gitlab/config/gitlab.yml.j2 dest=/home/git/gitlab/config/gitlab.yml owner=git group=git
+  template: src=templates/home/git/gitlab/config/gitlab.yml.j2 dest=/home/git/gitlab/config/gitlab.yml owner=git group=git
 
 - name: ensure copy of unicorn config exists 
-  action: template src=templates/home/git/gitlab/config/unicorn.rb.j2 dest=/home/git/gitlab/config/unicorn.rb owner=git group=git
+  template: src=templates/home/git/gitlab/config/unicorn.rb.j2 dest=/home/git/gitlab/config/unicorn.rb owner=git group=git
 
 - name: ensure copy of database config exists 
-  action: template src=templates/home/git/gitlab/config/database.yml.j2 dest=/home/git/gitlab/config/database.yml owner=git group=git
+  template: src=templates/home/git/gitlab/config/database.yml.j2 dest=/home/git/gitlab/config/database.yml owner=git group=git
 
 - name: ensure GitLab can write to log (1)
   file: state=directory path=/home/git/gitlab/log owner=git recurse=yes
@@ -57,3 +57,6 @@
 
 - name: Set git global user email
   command: sudo -u git -H git config --global user.email "$gitGlobalUserEmail" chdir=/home/git/gitlab
+
+- name: ensure copy of ssh config exists
+  template: src=templates/home/git/.ssh/config.j2 dest=/home/git/.ssh/config owner=git group=git
