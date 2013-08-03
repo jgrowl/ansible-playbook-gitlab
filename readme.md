@@ -25,7 +25,9 @@ Copy vars/main.template.yml into .ansible-playbook-gitlab/vars/main.yml or use s
 
 Edit hosts file and add the ip of the machine you wish to install gitlab to.
 
-Run the playbook (ansible-playbook -cssh -i /etc/ansible/playbooks/gitlab/hosts /etc/ansible/playbooks/gitlab/gitlab.yml)
+Run the playbook 
+
+`ansible-playbook -cssh -i /etc/ansible/playbooks/ansible-playbook-gitlab/hosts /etc/ansible/playbooks/ansible-playbook-gitlab/main.yml`
 
 Now you should be able to log in with the following credentials:
 
