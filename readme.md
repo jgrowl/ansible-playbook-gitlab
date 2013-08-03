@@ -27,7 +27,11 @@ Edit hosts file and add the ip of the machine you wish to install gitlab to.
 
 Run the playbook (ansible-playbook -cssh -i /etc/ansible/playbooks/gitlab/hosts /etc/ansible/playbooks/gitlab/gitlab.yml)
 
-Now you should be able to log in with username admin@local.host and password 5iveL!fe – change it once you’ve logged in.
+Now you should be able to log in with the following credentials:
+
+username `admin@local.host`
+
+password `5iveL!fe` 
 
 ## Credits
 Originally forked from https://github.com/tingtun/ansible-playbook-gitlab and playbook template from https://github.com/conikeec/ansible-playbook-template
