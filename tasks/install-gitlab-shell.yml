@@ -9,7 +9,7 @@
   file: path=/home/git/gitlab-shell owner=git group=git recurse=yes state=directory
 
 - name: Set the /home/git/gitlab-shell/config.yml
-  action: template src=templates/home/git/gitlab-shell/config.yml.j2 dest=/home/git/gitlab-shell/config.yml
+  template: src=templates/home/git/gitlab-shell/config.yml.j2 dest=/home/git/gitlab-shell/config.yml owner=git group=git
 
 # Do setup
 - name: Install gitlab-shell

@@ -6,6 +6,7 @@
     - vars/main.yml
   user: root
   roles:
+    - git-ppa/roles/ppa-dep
     - git-ppa
   tasks:
   - include: tasks/install-dependencies.yml
