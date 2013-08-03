@@ -89,14 +89,15 @@ production: &base
 
   ## LDAP settings
   ldap:
-    enabled: {{ldapEnabled}} 
-    host: {{ldapHost}} 
-    base: {{ldapBase}} 
-    port: {{ldapPort}} 
-    uid: {{ldapUid}} 
-    method: {{ldapMethod}}  # "ssl" or "plain"
-    bind_dn: {{ldapBindDn}} 
-    password: {{ldapPassword}} 
+    enabled: {{ldapEnabled}}
+    host: '{{ldapHost}}'
+    base: '{{ldapBase}}'
+    port: {{ldapPort}}
+    uid: '{{ldapUid}}'
+    method: '{{ldapMethod}}'  # "ssl" or "plain"
+    bind_dn: {% if ldapBindDn %}'{{ldapBindDn}}'{% else %} {% endif %}
+
+    password: {% if ldapPassword %}'{{ldapPassword}}'{% else %} {% endif %}
 
   ## OmniAuth settings
   omniauth:
