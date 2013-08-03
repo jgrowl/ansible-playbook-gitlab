@@ -20,7 +20,7 @@
     - redis-server 
     - checkinstall 
     - libxml2-dev 
-    - libxslt-dev 
+    - libxslt1-dev # The installation document says libxslt-dev, but I guess this is okay
     - libcurl4-openssl-dev 
     - libicu-dev
     - python
