@@ -14,7 +14,14 @@ You should probably have dns set up with a record that points to the box you wou
 The box that you are installing gitlab to needs to be able to resolve the gitlab address you setup in order to connect to gitlab-shell (ping gitlab.example.com from the box)
 
 ## Installation
-Edit vars/common.yml and change the variables to suit your desired configuration (At least change the password).
+
+`git clone --recursive https://github.com/jgrowl/ansible-playbook-gitlab.git` 
+
+or clone normally and:
+
+`git submodule init && git submodule update route`
+
+Copy vars/main.template.yml into .ansible-playbook-gitlab/vars/main.yml or use submodule and update configuration to suit your desired configuration.
 
 Edit hosts file and add the ip of the machine you wish to install gitlab to.
 
