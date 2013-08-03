@@ -22,6 +22,8 @@ or clone normally and:
 `git submodule init && git submodule update`
 
 Copy vars/main.template.yml into .ansible-playbook-gitlab/vars/main.yml or use submodule and update configuration to suit your desired configuration.
+`mkdir -p .ansible-playbook-gitlab/vars/`
+`cp vars/main.template.yml .ansible-playbook-gitlab/vars/`
 
 Edit hosts file and add the ip of the machine you wish to install gitlab to.
 
