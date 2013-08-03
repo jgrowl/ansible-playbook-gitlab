@@ -7,9 +7,9 @@ gitlab_url: "{{gitlabUrl}}"
 http_settings:
 #  user: someone
 #  password: somepass
-#  ca_file: /etc/ssl/cert.pem
-#  ca_path: /etc/pki/tls/certs
-  self_signed_cert: false
+  {% if https == 'false' %}#{% endif %}ca_file: {{caFile}}
+  {% if https == 'false' %}#{% endif %}ca_path: {{caPath}}
+  self_signed_cert: {{selfSignedCert}}
 
 # Repositories path
 # REPOS_PATH MUST NOT BE A SYMLINK!!!

@@ -1,12 +1,8 @@
-gitlabUrl: http://gitlab.example.com/
-
 rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.gz
 tmpRubyPath: /tmp/ruby/ruby-1.9.3-p392
 
-gitlabShellVersion: v1.4.0
 
 gitlabVersion: 5-4-stable
-
 gitlabHost: gitlab.example.com # e.g., server_name source.example.com;
 gitlabPort: 80
 gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
@@ -34,3 +30,15 @@ ldapUid: 'sAMAccountName' # For OpenLDAP, usually 'uid', but for ActiveDirectory
 ldapMethod: 'ssl' # "ssl" or "plain"
 ldapBindDn: '_the_full_dn_of_the_user_you_will_bind_with' # For Anonymous OpenLDAP use empty quotes, ie. ''
 ldapPassword: '_the_password_of_the_bind_user' # For Anonymous OpenLDAP use empty quotes, ie. ''
+
+# Gitlab shell config
+gitlabShellVersion: v1.4.0
+gitlabUrl: http://gitlab.example.com/ # Trailing forward slash is required
+
+#  user: someone
+#  password: somepass
+selfSignedCert: 'false'
+caFile: /etc/ssl/cert.pem
+caPath: /etc/pki/tls/certs
+
+
