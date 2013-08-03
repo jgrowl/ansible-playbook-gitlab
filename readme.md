@@ -15,11 +15,11 @@ The box that you are installing gitlab to needs to be able to resolve the gitlab
 
 ## Installation
 
-`git clone --recursive https://github.com/jgrowl/ansible-playbook-gitlab.git` 
+`git clone --recursive` 
 
 or clone normally and:
 
-`git submodule init && git submodule update route`
+`git submodule init && git submodule update`
 
 Copy vars/main.template.yml into .ansible-playbook-gitlab/vars/main.yml or use submodule and update configuration to suit your desired configuration.
 
