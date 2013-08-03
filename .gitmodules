@@ -1,0 +1,3 @@
+[submodule "roles/git-ppa"]
+	path = roles/git-ppa
+	url = https://github.com/jgrowl/ansible-playbook-git-ppa.git

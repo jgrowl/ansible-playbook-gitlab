@@ -16,7 +16,6 @@
     - libncurses5-dev 
     - libffi-dev 
     - curl 
-    - git-core 
     - openssh-server 
     - redis-server 
     - checkinstall 
