@@ -15,7 +15,7 @@ server {
   ssl on;
   ssl_certificate {{sslCertificate}};
   ssl_certificate_key {{sslCertificateKey}};
-  ssl_protocols  SSLv3 TLSv1 TLSv2;
+  ssl_protocols  SSLv3 TLSv1;
   ssl_ciphers AES:HIGH:!ADH:!MD5;
   ssl_prefer_server_ciphers   on;
 {% endif %}
