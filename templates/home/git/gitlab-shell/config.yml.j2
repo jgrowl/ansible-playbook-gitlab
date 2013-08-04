@@ -7,8 +7,8 @@ gitlab_url: "{{gitlabUrl}}"
 http_settings:
 #  user: someone
 #  password: somepass
-#  {% if gitlabShellHttps == 'false' %}#{% endif %}ca_file: {{caFile}}
-#  {% if gitlabShellHttps == 'false' %}#{% endif %}ca_path: {{caPath}}
+  {% if gitlabShellHttps == 'false' %}#{% endif %}ca_file: {{caFile}}
+  {% if gitlabShellHttps == 'false' %}#{% endif %}ca_path: {{caPath}}
   self_signed_cert: {{selfSignedCert}}
 
 # Repositories path
