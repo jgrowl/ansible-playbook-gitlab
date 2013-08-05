@@ -1,6 +1,6 @@
 # ansible-playbook-gitlab
 
-Playbook for installing GitLab 5.0 on ubuntu 12.04.
+Playbook for installing GitLab 5.4-stable on ubuntu 12.04.
 
 GitLab is a truly awesome platform for doing development within a business, but setting it up manually is tiring and error-prone as it requires many steps that needs to be executed. This Ansible playbook aims to solve this problem by significantly reducing the amount of steps.
 
