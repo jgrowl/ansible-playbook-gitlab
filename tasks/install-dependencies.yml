@@ -25,6 +25,8 @@
     - libicu-dev
     - python
     #- postfix 
+    # For 6-0pre
+    - python-docutils
 
 # Make sure right version of python will be used
 - name: ensure /usr/local/bin/python2 links to /usr/bin/python

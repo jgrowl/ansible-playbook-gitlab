@@ -1,1 +1,4 @@
-../.ansible-playbook-gitlab/vars/main.yml
+rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.gz
+tmpRubyPath: /tmp/ruby/ruby-1.9.3-p392
+
+gitlab_version: master

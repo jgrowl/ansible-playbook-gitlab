@@ -4,16 +4,22 @@
 - hosts: gitlab
   vars_files:
     - vars/main.yml
+    - vars/private.yml
   user: root
   roles:
     - git-ppa/roles/ppa-dep
     - git-ppa
   tasks:
   - include: tasks/install-dependencies.yml
+
+  - include: tasks/handle-updates.yml
+  - include: tasks/update/update-5-4-stable-to-6-0-pre.yml
+    when: previous_gitlab_version == "5-4-stable" && gitlab_version == "master"
+
   - include: tasks/install-gitlab-shell.yml
 
   - include: tasks/install-mysql.yml
-    only_if: "'$database' == 'mysql'"
+    when: database == 'mysql'
 
   - include: tasks/install-gitlab.yml
   - include: tasks/install-gems.yml
@@ -21,7 +27,9 @@
   - include: tasks/install-init-script.yml
 
   - include: tasks/install-nginx.yml
-    only_if: "'$webserver' == 'nginx'"
+    when: webserver == 'nginx'
+
+  - include: tasks/set-installed-version.yml
 
   handlers:
    - include: handlers/main.yml

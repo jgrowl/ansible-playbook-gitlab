@@ -1,0 +1,25 @@
+- name: Stop gitlab
+  service: name=gitlab state=stopped
+
+- name: ensure there is a ansible directory
+  file: path=/home/git/gitlab/.ansible/6-0pre state=directory owner=git group=git 
+
+#sudo -u git -H RAILS_ENV=production bundle exec rake gitlab:backup:create
+#
+- name: db:migrate 
+  shell: sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production && touch /home/git/gitlab/.ansible/6-0pre/migrate chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/6-0pre/migrate
+
+- name: migrate_groups 
+  shell: sudo -u git -H bundle exec rake migrate_groups RAILS_ENV=production && touch /home/git/gitlab/.ansible/6-0pre/migrate_groups chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/6-0pre/migrate_groups
+
+- name: migrate_global_projects
+  shell: sudo -u git -H bundle exec rake migrate_global_projects RAILS_ENV=production && touch /home/git/gitlab/.ansible/6-0pre/migrate_global_projects chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/6-0pre/migrate_global_projects
+
+- name: migrate_keys
+  shell: sudo -u git -H bundle exec rake migrate_keys RAILS_ENV=production && touch /home/git/gitlab/.ansible/6-0pre/migrate_keys chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/6-0pre/migrate_keys
+
+- name: migrate_inline_notes
+  shell: sudo -u git -H bundle exec rake migrate_inline_notes RAILS_ENV=production && touch /home/git/gitlab/.ansible/6-0pre/migrate_inline_notes chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/6-0pre/migrate_inline_notes
+
+- name: Start gitlab 
+  service: name=gitlab state=started
