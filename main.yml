@@ -14,7 +14,7 @@
 
   - include: tasks/handle-updates.yml
   - include: tasks/update/update-5-4-stable-to-6-0-pre.yml
-    when: previous_gitlab_version == "5-4-stable" && gitlab_version == "master"
+    when: previous_gitlab_version == "5-4-stable" and gitlab_version == "master"
 
   - include: tasks/install-gitlab-shell.yml
 
