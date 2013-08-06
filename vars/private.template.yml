@@ -1,8 +1,6 @@
-rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.gz
-tmpRubyPath: /tmp/ruby/ruby-1.9.3-p392
+## A ruby mirror example for when the main server craps out.
+#rubyUrl: http://mirrors.ibiblio.org/ruby/1.9/ruby-1.9.3-p392.tar.gz
 
-
-gitlabVersion: 5-4-stable
 gitlabHost: gitlab.example.com # e.g., server_name source.example.com;
 gitlabPort: 80
 gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
@@ -16,8 +14,8 @@ sslCertificate: $ssl_certs_dest_dir/your_site.crt
 sslCertificateKey: $ssl_keys_dest_dir/your_site.key
 
 # This is ugly but you have to break out of the role. Need to find a better solution here.
-ssl_certs_src_glob: ../../../.ansible-playbook-gitlab_ci/files/null/ssl/certs/*
-ssl_keys_src_glob: ../../../.ansible-playbook-gitlab_ci/files/null/ssl/keys/*
+ssl_certs_src_glob: ../../../.private/files/null/ssl/certs/*
+ssl_keys_src_glob: ../../../.private/files/null/ssl/keys/*
 
 gitlabDatabaseUsername: gitlab
 gitlabDatabasePassword: youPassw0Rd
@@ -42,7 +40,6 @@ ldapBindDn: '_the_full_dn_of_the_user_you_will_bind_with' # For Anonymous OpenLD
 ldapPassword: '_the_password_of_the_bind_user' # For Anonymous OpenLDAP use empty quotes, ie. ''
 
 # Gitlab shell config
-gitlabShellVersion: v1.4.0
 gitlabUrl: http://gitlab.example.com/ # Trailing forward slash is required
 gitlabShellHttps: false
 
