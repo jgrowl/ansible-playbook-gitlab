@@ -3,6 +3,3 @@ rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.gz
 rubyCompressedFile: ruby-1.9.3-p392.tar.gz
 rubyName: ruby-1.9.3-p392
 tmpRubyPath: $rubyTmpDir/$rubyName
-
-gitlabVersion: 5-4-stable
-gitlabShellVersion: v1.4.0

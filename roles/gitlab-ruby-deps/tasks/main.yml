@@ -1,0 +1,27 @@
+---
+# Gitlab's ruby from source dependencies
+
+- name: upgrade
+  action: apt update_cache=yes upgrade=yes cache_valid_time=900
+
+- name: install gitlab dependencies 
+  action: apt pkg=$item state=installed
+  with_items:
+    - build-essential 
+    - zlib1g-dev 
+    - libyaml-dev 
+    - libssl-dev 
+    - libgdbm-dev 
+    - libreadline-dev 
+    - libncurses5-dev 
+    - libffi-dev 
+    - curl 
+    - openssh-server 
+    - redis-server 
+    - checkinstall 
+    - libxml2-dev 
+    - libxslt1-dev # The installation document says libxslt-dev, but I guess this is okay
+    - libcurl4-openssl-dev 
+    - libicu-dev
+    - python
+    #- postfix 

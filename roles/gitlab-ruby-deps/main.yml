@@ -1,0 +1,9 @@
+---
+# This Playbook deploys ruby from source!
+
+- hosts: gitlab-ruby-deps
+  vars_files:
+    - vars/main.yml
+  user: root
+  tasks:
+  - include: tasks/main.yml

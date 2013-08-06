@@ -4,16 +4,20 @@
 - hosts: gitlab
   vars_files:
     - vars/main.yml
+    - vars/private.yml
   user: root
   roles:
     - git-ppa/roles/ppa-dep
     - git-ppa
+    - gitlab-ruby-deps
+    - ruby-from-src 
+    - {role: ssl-certs, when: https == 'true'}
   tasks:
   - include: tasks/install-dependencies.yml
   - include: tasks/install-gitlab-shell.yml
 
   - include: tasks/install-mysql.yml
-    only_if: "'$database' == 'mysql'"
+    when: database == 'mysql'
 
   - include: tasks/install-gitlab.yml
   - include: tasks/install-gems.yml
@@ -21,7 +25,7 @@
   - include: tasks/install-init-script.yml
 
   - include: tasks/install-nginx.yml
-    only_if: "'$webserver' == 'nginx'"
+    when: webserver == 'nginx'
 
   handlers:
    - include: handlers/main.yml
