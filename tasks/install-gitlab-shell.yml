@@ -3,7 +3,7 @@
 
 # Clone gitlab shell
 - name: Get gitlab-shell source
-  git: repo=https://github.com/gitlabhq/gitlab-shell.git dest=/home/git/gitlab-shell version=$gitlabShellVersion
+  git: repo=https://github.com/gitlabhq/gitlab-shell.git dest=/home/git/gitlab-shell version=$gitlab_shell_version
 
 - name: Set git as owner
   file: path=/home/git/gitlab-shell owner=git group=git recurse=yes state=directory
