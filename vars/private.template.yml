@@ -8,8 +8,16 @@ gitlabPort: 80
 gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
 gitlabEmailFrom: gitlab@gitlab.example.com
 https: 'false'
-sslCertificate: /etc/nginx/example.crt
-sslCertificateKey: /etc/nginx/ssl/example.key
+
+ssl_certs_dest_dir: /etc/ssl/certs
+ssl_keys_dest_dir: /etc/ssl/private
+
+sslCertificate: $ssl_certs_dest_dir/your_site.crt
+sslCertificateKey: $ssl_keys_dest_dir/your_site.key
+
+# This is ugly but you have to break out of the role. Need to find a better solution here.
+ssl_certs_src_glob: ../../../.ansible-playbook-gitlab_ci/files/null/ssl/certs/*
+ssl_keys_src_glob: ../../../.ansible-playbook-gitlab_ci/files/null/ssl/keys/*
 
 gitlabDatabaseUsername: gitlab
 gitlabDatabasePassword: youPassw0Rd
