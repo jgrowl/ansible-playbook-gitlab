@@ -11,11 +11,6 @@
     - git-ppa
   tasks:
   - include: tasks/install-dependencies.yml
-
-  - include: tasks/handle-updates.yml
-  - include: tasks/update/update-5-4-stable-to-6-0-pre.yml
-    when: previous_gitlab_version == "5-4-stable" and gitlab_version == "master"
-
   - include: tasks/install-gitlab-shell.yml
 
   - include: tasks/install-mysql.yml
@@ -28,8 +23,6 @@
 
   - include: tasks/install-nginx.yml
     when: webserver == 'nginx'
-
-  - include: tasks/set-installed-version.yml
 
   handlers:
    - include: handlers/main.yml

@@ -1,4 +1,0 @@
----
-- name: Set version of previously successfully installed gitlab to variable 
-  shell: sudo -u git -H [ -f version ] && cat version || echo '' chdir=/home/git/gitlab/.ansible
-  register: previous_gitlab_version

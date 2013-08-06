@@ -1,7 +1,0 @@
----
-#  
-- name: ensure there is a ansible directory
-  file: path=/home/git/gitlab/.ansible state=directory owner=git group=git 
-
-- name: Set version of successfully installed gitlab
-  shell: sudo -u git -H echo $gitlab_version > /home/git/gitlab/.ansible/version chdir=/home/git/gitlab/.ansible creates=/home/git/gitlab/.ansible/version
