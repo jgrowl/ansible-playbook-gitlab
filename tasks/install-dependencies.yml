@@ -12,3 +12,4 @@
 # Add git user
 - name: ensure user git is present
   user: state=present name=git system=yes shell=/bin/sh comment="Git Version Control" 
+  when: not gitlab_using_ldap
