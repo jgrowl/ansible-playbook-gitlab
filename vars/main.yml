@@ -1,3 +1,6 @@
+global_user: root 
+global_use_sudo: False
+
 rubyTmpDir: /tmp/ruby
 rubyUrl: http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.gz
 rubyCompressedFile: ruby-1.9.3-p392.tar.gz
