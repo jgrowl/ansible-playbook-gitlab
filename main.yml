@@ -7,6 +7,7 @@
     - vars/private.yml
   user: $global_user
   sudo: $global_use_sudo
+  sudo_user: $global_sudo_user
   roles:
     - git-ppa/roles/ppa-dep
     - git-ppa
