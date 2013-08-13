@@ -44,7 +44,8 @@ ldapPassword: '_the_password_of_the_bind_user' # For Anonymous OpenLDAP use empt
 gitlabUrl: http://gitlab.example.com/ # Trailing forward slash is required
 gitlabShellHttps: false
 
-sshUser: git
+gitlab_git_user: git
+sshUser: $gitlab_git_user
 sshHost: $gitlabHost
 sshPort: 22
 

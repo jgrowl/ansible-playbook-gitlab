@@ -1,8 +1,8 @@
 # Some tasks like setting up the database should only ever get run once.
-- name: ensure there is a ansible directory
-  file: path=/home/git/gitlab/.ansible state=directory owner=git group=git 
+- name: gitlab | Ensure there is a ansible directory
+  file: path=$gitlab_done_dir state=directory owner=$gitlab_git_user group=$gitlab_git_user
 
 # Note if this fails for some reason you might need to manually remove the .ansible/setup-db
-- name: setup database
-  shell:  sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production force=yes && sudo -u git -H touch /home/git/gitlab/.ansible/setup-db chdir=/home/git/gitlab creates=/home/git/gitlab/.ansible/setup-db
+- name: gitlab | Setup database
+  shell:  sudo -u $gitlab_git_user -H bundle exec rake gitlab:setup RAILS_ENV=production force=yes && sudo -u $gitlab_git_user -H touch $gitlab_setup_database_done  chdir=/home/git/gitlab creates=$gitlab_setup_database_done
 

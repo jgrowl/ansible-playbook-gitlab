@@ -1,62 +1,94 @@
 ---
 
 # Play book installs gitlab
-- name: clone gitlab source
+- name: gitlab | clone gitlab source
   git: repo=https://github.com/gitlabhq/gitlabhq.git dest=/home/git/gitlab version=$gitlabVersion
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: gitlab should be owned by git user
+- name: gitlab | gitlab should be owned by git user
   file: path=/home/git/gitlab owner=git group=git recurse=yes state=directory
 
-- name: Set the gitlab.yml configuration file
-  template: src=templates/home/git/gitlab/config/gitlab.yml.j2 dest=/home/git/gitlab/config/gitlab.yml owner=git group=git
+- name: gitlab | Set the gitlab.yml configuration file
+  template: src=home/git/gitlab/config/gitlab.yml.j2 dest=/home/git/gitlab/config/gitlab.yml owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure copy of unicorn config exists 
-  template: src=templates/home/git/gitlab/config/unicorn.rb.j2 dest=/home/git/gitlab/config/unicorn.rb owner=git group=git
+- name: gitlab | ensure copy of unicorn config exists 
+  template: src=home/git/gitlab/config/unicorn.rb.j2 dest=/home/git/gitlab/config/unicorn.rb owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure copy of database config exists 
-  template: src=templates/home/git/gitlab/config/database.yml.j2 dest=/home/git/gitlab/config/database.yml owner=git group=git
+- name: gitlab | ensure copy of database config exists 
+  template: src=home/git/gitlab/config/database.yml.j2 dest=/home/git/gitlab/config/database.yml owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to log (1)
+- name: gitlab | ensure GitLab can write to log (1)
   file: state=directory path=/home/git/gitlab/log owner=git recurse=yes
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to log (2)
+- name: gitlab | ensure GitLab can write to log (2)
   command: chmod -R u+rwX /home/git/gitlab/log
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to tmp (1)
+- name: gitlab | ensure GitLab can write to tmp (1)
   file: state=directory path=/home/git/gitlab/tmp owner=git recurse=yes
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to tmp (2)
+- name: gitlab | ensure GitLab can write to tmp (2)
   command: chmod -R u+rwX /home/git/gitlab/tmp
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure directory for satellites exists
+- name: gitlab | ensure directory for satellites exists
   file: state=directory path=/home/git/gitlab-satellites owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: Create directory for pids and make sure GitLab can write to it
+- name: gitlab | Create directory for pids and make sure GitLab can write to it
   file: path=/home/git/gitlab/tmp/pids/ state=directory owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to pid
+- name: gitlab | ensure GitLab can write to pid
   command: chmod -R u+rwX /home/git/gitlab/tmp/pids
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: Create directory for sockets and make sure GitLab can write to it
+- name: gitlab | Create directory for sockets and make sure GitLab can write to it
   file: path=/home/git/gitlab/tmp/sockets/ state=directory owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to sockets
+- name: gitlab | ensure GitLab can write to sockets
   command: chmod -R u+rwX /home/git/gitlab/tmp/sockets
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: Create directory for uploads and make sure GitLab can write to it
+- name: gitlab | Create directory for uploads and make sure GitLab can write to it
   file: path=/home/git/gitlab/public/uploads/ state=directory owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure GitLab can write to uploads 
+- name: gitlab | ensure GitLab can write to uploads 
   command: chmod -R u+rwX /home/git/gitlab/public/uploads
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
-- name: ensure copy of puma config exists
-  action: template src=templates/home/git/gitlab/config/puma.rb.j2 dest=/home/git/gitlab/config/puma.rb owner=git group=git
+- name: gitlab | ensure copy of puma config exists
+  template: src=home/git/gitlab/config/puma.rb.j2 dest=/home/git/gitlab/config/puma.rb owner=git group=git
 
-- name: Set git global user name
+- name: gitlab | Set git global user name
   command: sudo -u git -H git config --global user.name "$gitGlobalUserName" chdir=/home/git/gitlab
 
-- name: Set git global user email
+- name: gitlab | Set git global user email
   command: sudo -u git -H git config --global user.email "$gitGlobalUserEmail" chdir=/home/git/gitlab
 
-- name: ensure copy of ssh config exists
-  template: src=templates/home/git/.ssh/config.j2 dest=/home/git/.ssh/config owner=git group=git
+- name: gitlab | ensure copy of ssh config exists
+  template: src=home/git/.ssh/config.j2 dest=/home/git/.ssh/config owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
