@@ -16,7 +16,7 @@ http_settings:
 repos_path: "{{gitlab_base_dir}}/repositories"
 
 # File used as authorized_keys for gitlab user
-auth_file: "{{gitlab_base_dir}}/.ssh/authorized_keys"
+auth_file: "/home/{{gitlab_git_user}}/.ssh/authorized_keys"
 
 # Redis settings used for pushing commit notices to gitlab
 redis:
