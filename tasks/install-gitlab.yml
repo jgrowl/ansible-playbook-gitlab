@@ -81,6 +81,8 @@
 
 - name: gitlab | ensure copy of puma config exists
   template: src=home/git/gitlab/config/puma.rb.j2 dest=$gitlab_base_dir/gitlab/config/puma.rb owner=git group=git
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
 - name: gitlab | Set git global user name
   command: sudo -u git -H git config --global user.name "$gitGlobalUserName" chdir=$gitlab_base_dir/gitlab
