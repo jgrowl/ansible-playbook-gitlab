@@ -13,3 +13,6 @@
 - name: ensure user git is present
   user: state=present name=git system=yes shell=/bin/sh comment="Git Version Control" 
   when: not gitlab_use_ldap_user
+
+- name: gitlab | Create gitlab directory (Most likely /home/git)
+  file: path=$gitlab_base_dir state=directory owner=git group=git
