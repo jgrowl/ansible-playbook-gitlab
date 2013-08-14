@@ -4,5 +4,5 @@
 
 # Note if this fails for some reason you might need to manually remove the .ansible/setup-db
 - name: gitlab | Setup database
-  shell:  sudo -u $gitlab_git_user -H bundle exec rake gitlab:setup RAILS_ENV=production force=yes && sudo -u $gitlab_git_user -H touch $gitlab_setup_database_done  chdir=/home/git/gitlab creates=$gitlab_setup_database_done
+  shell:  sudo -u $gitlab_git_user -H bundle exec rake gitlab:setup RAILS_ENV=production force=yes && sudo -u $gitlab_git_user -H touch $gitlab_setup_database_done  chdir=$gitlab_base_dir/gitlab creates=$gitlab_setup_database_done
 

@@ -3,13 +3,13 @@
 # App Version: 5.0
 
 upstream gitlab {
-  server unix:/home/git/gitlab/tmp/sockets/gitlab.socket;
+  server unix:{{gitlab_base_dir}}/gitlab/tmp/sockets/gitlab.socket;
 }
 
 server {
   listen {{gitlabIp}} default_server;         # e.g., listen 192.168.1.1:80;
   server_name {{gitlabHost}};     # e.g., server_name source.example.com;
-  root /home/git/gitlab/public;
+  root {{gitlab_base_dir}}/gitlab/public;
 
 {% if https == 'true' %}
   ssl on;

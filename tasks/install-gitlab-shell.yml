@@ -3,21 +3,21 @@
 
 # Clone gitlab shell
 - name: gitlab | Get gitlab-shell source
-  git: repo=https://github.com/gitlabhq/gitlab-shell.git dest=/home/git/gitlab-shell version=$gitlabShellVersion
+  git: repo=https://github.com/gitlabhq/gitlab-shell.git dest=$gitlab_base_dir/gitlab-shell version=$gitlabShellVersion
   sudo: yes
   sudo_user: $gitlab_git_user
 
 - name: gitlab | Set git as owner
-  file: path=/home/git/gitlab-shell owner=git group=git recurse=yes state=directory
+  file: path=$gitlab_base_dir/gitlab-shell owner=git group=git recurse=yes state=directory
 
 - name: gitlab | Set the /home/git/gitlab-shell/config.yml
-  template: src=templates/home/git/gitlab-shell/config.yml.j2 dest=/home/git/gitlab-shell/config.yml owner=git group=git
+  template: src=templates/home/git/gitlab-shell/config.yml.j2 dest=$gitlab_base_dir/gitlab-shell/config.yml owner=git group=git
   sudo: yes
   sudo_user: $gitlab_git_user
 
 # Do setup
 - name: gitlab | Install gitlab-shell
-  command: sudo -u $gitlab_git_user -H ./bin/install chdir=/home/git/gitlab-shell creates=/home/git/repositories
+  command: sudo -u $gitlab_git_user -H ./bin/install chdir=$gitlab_base_dir/gitlab-shell creates=$gitlab_base_dir/repositories
 
 #Install also touches this file, multiple creates=?
 ## File used as authorized_keys for gitlab user

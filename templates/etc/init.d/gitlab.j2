@@ -15,7 +15,7 @@
 ### END INIT INFO
 
 
-APP_ROOT="/home/git/gitlab"
+APP_ROOT="{{gitlab_base_dir}}/gitlab"
 APP_USER="git"
 DAEMON_OPTS="-C $APP_ROOT/config/puma.rb"
 PID_PATH="$APP_ROOT/tmp/pids"

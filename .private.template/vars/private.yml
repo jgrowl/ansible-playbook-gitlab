@@ -30,7 +30,7 @@ webserver: nginx
 database: mysql 
 
 # LDAP Variables
-gitlab_using_ldap: false
+gitlab_use_ldap_user: false
 ldapEnabled: 'false'
 ldapHost: '_your_ldap_server' # ie. 'ldap.example.com'
 ldapBase: '_the_base_where_you_search_for_users' # ie. 'dc=example,dc=com'
