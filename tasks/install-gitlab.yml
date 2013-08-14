@@ -84,9 +84,13 @@
 
 - name: gitlab | Set git global user name
   command: sudo -u git -H git config --global user.name "$gitGlobalUserName" chdir=$gitlab_base_dir/gitlab
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
 - name: gitlab | Set git global user email
   command: sudo -u git -H git config --global user.email "$gitGlobalUserEmail" chdir=$gitlab_base_dir/gitlab
+  sudo: yes
+  sudo_user: $gitlab_git_user
 
 - name: gitlab | ensure copy of ssh config exists
   template: src=home/git/.ssh/config.j2 dest=/home/$gitlab_git_user/.ssh/config owner=git group=git
