@@ -3,7 +3,7 @@
 # App Version: 5.0
 
 upstream gitlab {
-  server unix:{{gitlab_base_dir}}/gitlab/tmp/sockets/gitlab.socket;
+  server unix:{{gitlab_socket_dir}}/gitlab.socket;
 }
 
 server {

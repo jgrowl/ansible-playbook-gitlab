@@ -50,22 +50,22 @@
   sudo_user: $gitlab_git_user
 
 - name: gitlab | Create directory for pids and make sure GitLab can write to it
-  file: path=$gitlab_base_dir/gitlab/tmp/pids/ state=directory owner=git group=git
+  file: path=$gitlab_pid_dir  state=directory owner=git group=git
   sudo: yes
   sudo_user: $gitlab_git_user
 
 - name: gitlab | ensure GitLab can write to pid
-  command: chmod -R u+rwX $gitlab_base_dir/gitlab/tmp/pids
+  command: chmod -R u+rwX $gitlab_pid_dir
   sudo: yes
   sudo_user: $gitlab_git_user
 
 - name: gitlab | Create directory for sockets and make sure GitLab can write to it
-  file: path=$gitlab_base_dir/gitlab/tmp/sockets/ state=directory owner=git group=git
+  file: path=$gitlab_socket_dir state=directory owner=git group=git
   sudo: yes
   sudo_user: $gitlab_git_user
 
 - name: gitlab | ensure GitLab can write to sockets
-  command: chmod -R u+rwX $gitlab_base_dir/gitlab/tmp/sockets
+  command: chmod -R u+rwX $gitlab_socket_dir
   sudo: yes
   sudo_user: $gitlab_git_user
 

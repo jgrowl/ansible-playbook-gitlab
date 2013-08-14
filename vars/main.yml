@@ -9,6 +9,8 @@ rubyName: ruby-1.9.3-p392
 tmpRubyPath: $rubyTmpDir/$rubyName
 
 gitlab_base_dir: /home/git
+gitlab_socket_dir: $gitlab_base_dir/gitlab/tmp/sockets
+gitlab_pid_dir: $gitlab_base_dir/gitlab/tmp/pids
 
 gitlabVersion: 5-4-stable
 gitlabShellVersion: v1.4.0
