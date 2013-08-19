@@ -13,7 +13,7 @@ gitlab_socket_dir: $gitlab_base_dir/gitlab/tmp/sockets
 gitlab_pid_dir: $gitlab_base_dir/gitlab/tmp/pids
 
 gitlabVersion: 5-4-stable
-gitlabShellVersion: v1.4.0
+gitlabShellVersion: v1.5.0
 
 # This is used to store files that indicate that an operation has been run. Note that if you change this after you have
 # run the script, you may clobber your previous install and/or other bad things. I do not know if if /etc/ansible is
