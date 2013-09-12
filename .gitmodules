@@ -7,3 +7,4 @@
 [submodule "roles/ssl-certs"]
 	path = roles/ssl-certs
 	url = https://github.com/jgrowl/ansible-playbook-ssl-certs.git
+  branch = master
