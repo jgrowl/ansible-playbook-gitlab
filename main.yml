@@ -26,7 +26,7 @@
   - include: tasks/install-init-script.yml
 
   - include: tasks/install-nginx.yml
-    when: webserver == 'nginx'
+    when: gitlab_webserver == 'nginx'
 
   handlers:
    - include: handlers/main.yml

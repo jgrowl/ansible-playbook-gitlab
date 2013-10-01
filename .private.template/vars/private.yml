@@ -24,7 +24,7 @@ gitGlobalUserName: GitLab
 gitGlobalUserEmail: gitlab@localhost
 
 # Currently only nginx is supported
-webserver: nginx
+gitlab_webserver: nginx
 
 # Currently only mysql is supported
 database: mysql 
