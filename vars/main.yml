@@ -15,6 +15,9 @@ gitlab_pid_dir: $gitlab_base_dir/gitlab/tmp/pids
 gitlabVersion: 5-4-stable
 gitlabShellVersion: v1.5.0
 
+# LOCK TABLES is needed for backups
+gitlab_mysql_priv: gitlabhq_production.*:SELECT,LOCK TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER
+
 # This is used to store files that indicate that an operation has been run. Note that if you change this after you have
 # run the script, you may clobber your previous install and/or other bad things. I do not know if if /etc/ansible is
 # the best place to put these files but I wanted to avoid home directories in case the user that runs ansible ever changes.
