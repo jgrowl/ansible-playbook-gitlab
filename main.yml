@@ -12,7 +12,7 @@
     - git-ppa
     - gitlab-ruby-deps
     - ruby-from-src 
-    - {role: ssl-certs, when: https == 'true'}
+    - {role: ssl-certs, when: gitlab_https}
   tasks:
   - include: tasks/install-dependencies.yml
   - include: tasks/install-gitlab-shell.yml

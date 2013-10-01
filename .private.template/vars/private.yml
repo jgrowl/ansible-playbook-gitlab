@@ -5,7 +5,7 @@ gitlabHost: gitlab.example.com # e.g., server_name source.example.com;
 gitlabPort: 80
 gitlabIp: ${ansible_default_ipv4.address}:80   # e.g., listen 192.168.1.1:80
 gitlabEmailFrom: gitlab@gitlab.example.com
-https: 'false'
+gitlab_https: False 
 
 ssl_certs_dest_dir: /etc/ssl/certs
 ssl_keys_dest_dir: /etc/ssl/private
