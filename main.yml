@@ -1,5 +1,4 @@
----
-# This Playbook deploys gitlab!
+--- Gitlab playbook
 
 - hosts: gitlab
   vars_files:
