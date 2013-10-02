@@ -16,7 +16,7 @@ gitlabVersion: 5-4-stable
 gitlabShellVersion: v1.5.0
 
 # LOCK TABLES is needed for backups
-gitlab_mysql_priv: gitlabhq_production.*:SELECT,LOCK TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER
+gitlab_mysql_priv: 'gitlabhq_production.*:SELECT,LOCK TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER'
 
 # Only nginx is supported currently
 gitlab_webserver: False
