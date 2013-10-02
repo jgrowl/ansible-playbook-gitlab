@@ -1,4 +1,5 @@
---- Gitlab's MySQL playbook
+--- 
+#Gitlab's MySQL playbook
 
 - name: gitlab | mysql |install mysql dependencies
   action: apt pkg=$item state=installed
