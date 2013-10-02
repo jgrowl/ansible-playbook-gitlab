@@ -16,8 +16,8 @@ gitlabVersion: 5-4-stable
 gitlabShellVersion: v1.5.0
 
 # LOCK TABLES is needed for backups but we can't have spaces in the list, is there a work around?
-#gitlab_mysql_priv: gitlabhq_production.*:SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER
-gitlab_mysql_priv: gitlabhq_production.*:ALL
+gitlab_mysql_priv: gitlabhq_production.*:SELECT,LOCK\ TABLES,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER
+#gitlab_mysql_priv: gitlabhq_production.*:ALL
 
 # Only nginx is supported currently
 gitlab_webserver: False
