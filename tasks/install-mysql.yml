@@ -15,5 +15,5 @@
 - name: gitlab | mysql | ensure database gitlabhq_production is present
   mysql_db: state=present name=gitlabhq_production collation=utf8_unicode_ci encoding=utf8
 
-- name: gitlab | mysql | ensure database user gitlab has necessary privleges
+- name: gitlab | mysql | ensure database user gitlab has necessary privileges
   mysql_user: state=present name=gitlab priv=$gitlab_mysql_priv
